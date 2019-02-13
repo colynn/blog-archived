@@ -1,4 +1,7 @@
-#### 实现原则
+### 推荐实践
+![Image](images/wechat_auth_login.png)
+
+### 实现原则
 * 小程序与开发服务器端通过 3rd_session（第三方session）【即自定义登录状态】来实现通信，微信官方也不建议直接通过openid/session_key来通信；
 
 *原因*： openid是微信用户的唯一标识，直接用于传参通信的话，会存在被第三方组织截获的风险，进而用于其他用途，
