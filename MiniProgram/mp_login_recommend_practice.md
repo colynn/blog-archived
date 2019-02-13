@@ -9,3 +9,4 @@
 * 数据校验方式：通过调用接口（如 wx.getUserInfo）获取数据时，接口会同时返回 rawData、signature，其中 signature = sha1( rawData + session_key )
 开发者将 signature、rawData 发送到开发者服务器进行校验。服务器利用用户对应的 session_key 使用相同的算法计算出签名 signature2 ，比对 signature 与 signature2 即可校验数据的完整性。
 小程序登录判断依赖wx.checksession， 但对于自身的登录态也是需要维护的，当前没有想到一个比较完整的解决方案。
+[返回主目录](README.md)
