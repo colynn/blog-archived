@@ -55,6 +55,7 @@ Installing '/usr/local/Cellar/php@7.1/7.1.24_2/pecl/20160303/xdebug.so'
 install ok: channel://pecl.php.net/xdebug-2.6.1
 Extension xdebug enabled in php.ini
 ```
+
 2. 配置
 将xdebug.so 文件拷贝或是软链接至 /usr/local/opt/php@7.1/lib/php/20160303
 ```
