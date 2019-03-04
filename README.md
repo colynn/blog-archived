@@ -10,9 +10,11 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 ### 小程序
 * [小程序登录的推荐实践](MiniProgram/mp_login_recommend_practice.md)
 
+### PHP
+* [Mac-PHP环境准备](PHP/0_mac_prepare_php_env.md)
+
 ### 工具箱
 * [Charles抓包http/https](Tools/0_charles_capture_package.md)
-
 
 ### Markdown
 
