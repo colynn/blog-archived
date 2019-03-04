@@ -47,6 +47,7 @@ echo 'export PATH="/usr/local/opt/php@7.1/sbin:$PATH"' >> ~/.bash_profile
 
 #### 2. xdebug
 1. 安装
+
 ```
 $ pecl install xdebug
 
@@ -58,6 +59,7 @@ Extension xdebug enabled in php.ini
 
 2. 配置
 将xdebug.so 文件拷贝或是软链接至 /usr/local/opt/php@7.1/lib/php/20160303
+
 ```
 $ cp /usr/local/Cellar/php@7.1/7.1.24_2/pecl/20160303/xdebug.so /usr/local/opt/php@7.1/lib/php/20160303
 ```
@@ -71,15 +73,20 @@ _原因_: 因为默认安装后，php.ini配置文件会以相对路径引用，
 
 #### 3. nginx
 1. 安装
+
 ```
 $ brew install nginx
 ```
+
 2. 配置
 * 备份默认配置
+
 ```
 $ cp /usr/local/etc/nginx/nginx.conf /usr/local/etc/nginx/nginx.conf.default
 ```
+
 * 修改配置,主要修改项示例如下：
+
 ```
 server {
         listen       8080;
