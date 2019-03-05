@@ -37,13 +37,11 @@ $ brew install autoconf
 
 #### 1.php71
 1. 安装
-
 ```
 $ brew install php71 --without-apache  --with-fpm
 ```
 
 2. 可执行文件添加至环境变量
-
 ```
 echo 'export PATH="/usr/local/opt/php@7.1/bin:$PATH"' >> ~/.bash_profile
 echo 'export PATH="/usr/local/opt/php@7.1/sbin:$PATH"' >> ~/.bash_profile
@@ -51,7 +49,6 @@ echo 'export PATH="/usr/local/opt/php@7.1/sbin:$PATH"' >> ~/.bash_profile
 
 #### 2. xdebug
 1. 安装
-
 ```
 $ pecl install xdebug
 
@@ -62,8 +59,8 @@ Extension xdebug enabled in php.ini
 ```
 
 2. 配置
-* 将xdebug.so 文件拷贝或是软链接至 /usr/local/opt/php@7.1/lib/php/20160303
 
+* 将xdebug.so 文件拷贝或是软链接至 /usr/local/opt/php@7.1/lib/php/20160303
 ```
 $ cp /usr/local/Cellar/php@7.1/7.1.24_2/pecl/20160303/xdebug.so /usr/local/opt/php@7.1/lib/php/20160303/
 ```
@@ -73,7 +70,6 @@ $ cp /usr/local/Cellar/php@7.1/7.1.24_2/pecl/20160303/xdebug.so /usr/local/opt/p
 _原因_: 因为默认安装后，php.ini配置文件会以相对路径引用，所以需要拷贝至lib库目录；也可使用绝对路径引用，就无此操作。
 
 * xdebug示例配置，添加至php.ini
-
 ```
 [xdebug]
 xdebug.remote_enable = 1
@@ -83,15 +79,14 @@ xdebug.auto_trace=On
 ;性能分析，可关闭（关闭后提升性能）
 xdebug.profiler_enable=On
 ```
-3. 重启php服务
 
+3. 重启php服务
 ```
 brew services restart php@7.1
 ```
 
 #### 3. nginx
 1. 安装
-
 ```
 $ brew install nginx
 ```
@@ -99,13 +94,11 @@ $ brew install nginx
 2. 配置
 
 * 备份默认配置
-
 ```
 $ cp /usr/local/etc/nginx/nginx.conf /usr/local/etc/nginx/nginx.conf.default
 ```
 
 * 修改配置,主要修改项示例如下：
-
 ```
 server {
         listen       8080;
@@ -155,7 +148,6 @@ server {
 
 #### 4. mysql（根据需要）
 1. 安装
-
 ```
 brew install mysql mysql-client
 ```
@@ -174,26 +166,22 @@ For compilers to find mysql-client you may need to set:
 
 #### 5.服务管理
 1. 重启php@71
-
 ```
 $ brew services restart php@7.1
 ```
 
 2. 重启nginx
-
 ```
 $ brew services restart nginx
 ```
 
 3. nginx也可通过如下命令reload
-
 ```
 $ nginx -t
 $ nginx -s reload
 ```
 
 4. 重启mysql 服务
-
 ```
 brew services restart mysql
 ```
@@ -215,3 +203,5 @@ $ xcode-select --install
 sudo ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include /usr/include
 ```
 _注_: 将MacOSX10.14替换成你自己的系统版本号
+
+[返回首页](/index.html)
