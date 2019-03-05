@@ -90,6 +90,7 @@ brew services restart php@7.1
 
 #### 3. nginx
 1. 安装
+
 ```
 $ brew install nginx
 ```
@@ -97,11 +98,13 @@ $ brew install nginx
 2. 配置
 
 * 备份默认配置
+
 ```
 $ cp /usr/local/etc/nginx/nginx.conf /usr/local/etc/nginx/nginx.conf.default
 ```
 
 * 修改配置,主要修改项示例如下：
+
 ```
 server {
         listen       8080;
