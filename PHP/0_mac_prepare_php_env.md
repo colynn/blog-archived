@@ -152,21 +152,20 @@ echo 'export PATH="/usr/local/opt/php@7.1/sbin:$PATH"' >> ~/.bash_profile
 
 #### 4. mysql（根据需要）
 1. 安装
-```
-brew install mysql mysql-client
-```
+    ```
+    brew install mysql mysql-client
+    ```
 
 2. 配置 mysql-client 添加至环境变量
 
-```
-If you need to have mysql-client first in your PATH run:
-  echo 'export PATH="/usr/local/opt/mysql-client/bin:$PATH"' >> ~/.bash_profile
+    ```
+    If you need to have mysql-client first in your PATH run:
+      echo 'export PATH="/usr/local/opt/mysql-client/bin:$PATH"' >> ~/.bash_profile
 
-For compilers to find mysql-client you may need to set:
-  export LDFLAGS="-L/usr/local/opt/mysql-client/lib"
-  export CPPFLAGS="-I/usr/local/opt/mysql-client/include"
-```
-
+    For compilers to find mysql-client you may need to set:
+      export LDFLAGS="-L/usr/local/opt/mysql-client/lib"
+      export CPPFLAGS="-I/usr/local/opt/mysql-client/include"
+    ```
 
 #### 5.服务管理
 1. 重启php@71
