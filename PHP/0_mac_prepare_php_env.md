@@ -13,8 +13,9 @@ _注_: PECL（The PHP Extension Community Library）是 PHP 扩展的存储库�
 
 ### 安装清单
 1. php71
-2. xdebug
+2. xdebug (调试)
 3. nginx
+4. mysql
 
 __说明__: Mac OS默认安装了php, apache， 但是不推荐使用此默认设置，原因有二（服务配置涉及权限配置调整，没有提供方便的服务启停方式；）
 
@@ -36,10 +37,13 @@ $ brew install autoconf
 
 #### 1.php71
 1. 安装
+
 ```
 $ brew install php71 --without-apache  --with-fpm
 ```
+
 2. 可执行文件添加至环境变量
+
 ```
 echo 'export PATH="/usr/local/opt/php@7.1/bin:$PATH"' >> ~/.bash_profile
 echo 'export PATH="/usr/local/opt/php@7.1/sbin:$PATH"' >> ~/.bash_profile
@@ -58,7 +62,7 @@ Extension xdebug enabled in php.ini
 ```
 
 2. 配置
-将xdebug.so 文件拷贝或是软链接至 /usr/local/opt/php@7.1/lib/php/20160303
+* 将xdebug.so 文件拷贝或是软链接至 /usr/local/opt/php@7.1/lib/php/20160303
 
 ```
 $ cp /usr/local/Cellar/php@7.1/7.1.24_2/pecl/20160303/xdebug.so /usr/local/opt/php@7.1/lib/php/20160303/
@@ -68,8 +72,22 @@ $ cp /usr/local/Cellar/php@7.1/7.1.24_2/pecl/20160303/xdebug.so /usr/local/opt/p
 
 _原因_: 因为默认安装后，php.ini配置文件会以相对路径引用，所以需要拷贝至lib库目录；也可使用绝对路径引用，就无此操作。
 
+* xdebug示例配置，添加至php.ini
 
+```
+[xdebug]
+xdebug.remote_enable = 1
+xdebug.remote_port = 9000
+;自动跟踪，可关闭（关闭后提升性能）
+xdebug.auto_trace=On
+;性能分析，可关闭（关闭后提升性能）
+xdebug.profiler_enable=On
+```
+3. 重启php服务
 
+```
+brew services restart php@7.1
+```
 
 #### 3. nginx
 1. 安装
@@ -79,6 +97,7 @@ $ brew install nginx
 ```
 
 2. 配置
+
 * 备份默认配置
 
 ```
@@ -133,19 +152,50 @@ server {
     }
 ```
 
-#### 4.服务管理
+
+#### 4. mysql（根据需要）
+1. 安装
+
+```
+brew install mysql mysql-client
+```
+
+2. 配置 mysql-client 添加至环境变量
+
+```
+If you need to have mysql-client first in your PATH run:
+  echo 'export PATH="/usr/local/opt/mysql-client/bin:$PATH"' >> ~/.bash_profile
+
+For compilers to find mysql-client you may need to set:
+  export LDFLAGS="-L/usr/local/opt/mysql-client/lib"
+  export CPPFLAGS="-I/usr/local/opt/mysql-client/include"
+```
+
+
+#### 5.服务管理
 1. 重启php@71
+
 ```
 $ brew services restart php@7.1
 ```
+
 2. 重启nginx
+
 ```
 $ brew services restart nginx
 ```
+
 3. nginx也可通过如下命令reload
+
 ```
 $ nginx -t
 $ nginx -s reload
+```
+
+4. 重启mysql 服务
+
+```
+brew services restart mysql
 ```
 
 #### 常见问题
