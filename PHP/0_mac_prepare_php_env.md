@@ -60,27 +60,26 @@ Extension xdebug enabled in php.ini
 ```
 
 2. 配置
-* 将xdebug.so 文件拷贝或是软链接至 /usr/local/opt/php@7.1/lib/php/20160303
+    * 将xdebug.so 文件拷贝或是软链接至 /usr/local/opt/php@7.1/lib/php/20160303
+    ```
+    $ cp /usr/local/Cellar/php@7.1/7.1.24_2/pecl/20160303/xdebug.so /usr/local/opt/php@7.1/lib/php/20160303/
+    ```
 
-```
-$ cp /usr/local/Cellar/php@7.1/7.1.24_2/pecl/20160303/xdebug.so /usr/local/opt/php@7.1/lib/php/20160303/
-```
+    ![Image](images/xdebug-conf.png)
 
-![Image](images/xdebug-conf.png)
+    _原因_: 因为默认安装后，php.ini配置文件会以相对路径引用，所以需要拷贝至lib库目录；也可使用绝对路径引用，就无此操作。
 
-_原因_: 因为默认安装后，php.ini配置文件会以相对路径引用，所以需要拷贝至lib库目录；也可使用绝对路径引用，就无此操作。
+    * xdebug示例配置，添加至php.ini
 
-* xdebug示例配置，添加至php.ini
-
-```
-[xdebug]
-xdebug.remote_enable = 1
-xdebug.remote_port = 9000
-;自动跟踪，可关闭（关闭后提升性能）
-xdebug.auto_trace=On
-;性能分析，可关闭（关闭后提升性能）
-xdebug.profiler_enable=On
-```
+    ```
+    [xdebug]
+    xdebug.remote_enable = 1
+    xdebug.remote_port = 9000
+    ;自动跟踪，可关闭（关闭后提升性能）
+    xdebug.auto_trace=On
+    ;性能分析，可关闭（关闭后提升性能）
+    xdebug.profiler_enable=On
+    ```
 
 3. 重启php服务
 
@@ -97,59 +96,59 @@ $ brew install nginx
 
 2. 配置
 
-* 备份默认配置
+    * 备份默认配置
 
-```
-$ cp /usr/local/etc/nginx/nginx.conf /usr/local/etc/nginx/nginx.conf.default
-```
+    ```
+    $ cp /usr/local/etc/nginx/nginx.conf /usr/local/etc/nginx/nginx.conf.default
+    ```
 
-* 修改配置,主要修改项示例如下：
+    * 修改配置,主要修改项示例如下：
 
-```
-server {
-        listen       8080;
-        server_name  localhost;
+    ```
+    server {
+            listen       8080;
+            server_name  localhost;
 
-        #charset koi8-r;
+            #charset koi8-r;
 
-        access_log  logs/host.access.log  main;
+            access_log  logs/host.access.log  main;
 
-	    root        [php-code-directory];
+    	    root        [php-code-directory];
 
-        index index.php;
+            index index.php;
 
-        location / {
-            index  index.html index.htm index.php;
+            location / {
+                index  index.html index.htm index.php;
+            }
+
+            #error_page  404              /404.html;
+
+            # redirect server error pages to the static page /50x.html
+            #
+            error_page   500 502 503 504  /50x.html;
+            location = /50x.html {
+                root   html;
+            }
+
+            # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+            #
+            location ~ \.php$ {
+                # root           html;
+                fastcgi_pass   127.0.0.1:9000;
+                fastcgi_index  index.php;
+                # fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+                fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+                include        fastcgi_params;
+            }
+
+            # deny access to .htaccess files, if Apache's document root
+            # concurs with nginx's one
+            #
+            location ~ /\.ht {
+                deny  all;
+            }
         }
-
-        #error_page  404              /404.html;
-
-        # redirect server error pages to the static page /50x.html
-        #
-        error_page   500 502 503 504  /50x.html;
-        location = /50x.html {
-            root   html;
-        }
-
-        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-        #
-        location ~ \.php$ {
-            # root           html;
-            fastcgi_pass   127.0.0.1:9000;
-            fastcgi_index  index.php;
-            # fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
-            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-            include        fastcgi_params;
-        }
-
-        # deny access to .htaccess files, if Apache's document root
-        # concurs with nginx's one
-        #
-        location ~ /\.ht {
-            deny  all;
-        }
-    }
-```
+    ```
 
 
 #### 4. mysql（根据需要）
