@@ -71,6 +71,7 @@ $ cp /usr/local/Cellar/php@7.1/7.1.24_2/pecl/20160303/xdebug.so /usr/local/opt/p
 _原因_: 因为默认安装后，php.ini配置文件会以相对路径引用，所以需要拷贝至lib库目录；也可使用绝对路径引用，就无此操作。
 
 * xdebug示例配置，添加至php.ini
+
 ```
 [xdebug]
 xdebug.remote_enable = 1
