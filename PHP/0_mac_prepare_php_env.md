@@ -83,6 +83,7 @@ xdebug.profiler_enable=On
 ```
 
 3. 重启php服务
+
 ```
 brew services restart php@7.1
 ```
