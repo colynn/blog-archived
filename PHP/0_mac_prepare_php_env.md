@@ -49,15 +49,14 @@ echo 'export PATH="/usr/local/opt/php@7.1/sbin:$PATH"' >> ~/.bash_profile
 
 #### 2. xdebug
 1. 安装
+    ```
+    $ pecl install xdebug
 
-```
-$ pecl install xdebug
-
-....
-Installing '/usr/local/Cellar/php@7.1/7.1.24_2/pecl/20160303/xdebug.so'
-install ok: channel://pecl.php.net/xdebug-2.6.1
-Extension xdebug enabled in php.ini
-```
+    ....
+    Installing '/usr/local/Cellar/php@7.1/7.1.24_2/pecl/20160303/xdebug.so'
+    install ok: channel://pecl.php.net/xdebug-2.6.1
+    Extension xdebug enabled in php.ini
+    ```
 
 2. 配置
     * 将xdebug.so 文件拷贝或是软链接至 /usr/local/opt/php@7.1/lib/php/20160303
@@ -83,16 +82,16 @@ Extension xdebug enabled in php.ini
 
 3. 重启php服务
 
-```
-brew services restart php@7.1
-```
+    ```
+    brew services restart php@7.1
+    ```
 
 #### 3. nginx
 1. 安装
 
-```
-$ brew install nginx
-```
+    ```
+    $ brew install nginx
+    ```
 
 2. 配置
 
