@@ -1,9 +1,5 @@
 ## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/colynn/colynn.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
 ### K8s
 * [安装 MiniKube](K8s/0.Install_Minikube.md)
 
@@ -15,6 +11,7 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ### 工具箱
 * [Charles抓包http/https](Tools/0_charles_capture_package.md)
+* [VSCode 环境设置](Tools/1_vscode_env_setting.md)
 
 ### Markdown
 
