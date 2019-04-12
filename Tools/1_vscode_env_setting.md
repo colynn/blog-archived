@@ -33,6 +33,8 @@ __设置路径__：Code -> Preferences -> Settings -> Workspace Settings, Search
     // 路径和css文件名以你的文件为准
     "markdown-pdf.styles": ["/.markdown/github.css"],
     ```
+    自定义样式参考：http://markedstyle.com/styles
+    
     __设置路径__：Code -> Preferences -> Settings
 
 [返回首页](/index.html)
