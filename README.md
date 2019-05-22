@@ -1,6 +1,7 @@
 ## Welcome to GitHub Pages
 
 ### K8s
+* [Linux基础](Local/认识Linux.md)
 * [安装 MiniKube](K8s/0.Install_Minikube.md)
 
 ### 小程序
