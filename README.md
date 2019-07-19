@@ -10,6 +10,9 @@
 ### PHP
 * [Mac-PHP环境准备](PHP/0_mac_prepare_php_env.md)
 
+### Python
+* [Python-基础知识汇总](Python/0_basic_knowledge_summarizing.md)
+
 ### 工具箱
 * [Charles抓包http/https](Tools/0_charles_capture_package.md)
 * [VSCode 环境设置](Tools/1_vscode_env_setting.md)
