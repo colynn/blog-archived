@@ -34,7 +34,43 @@ __例如__，当需要将数据作为参数传递给API，但不希望API修改�
 
 
 ### 元组是否可以作为字典的key， 分场景；
+首先一个对象能不能作为字典的key, 就取决于其有没有__hash__方法。 所以除了容器对象（list/dist/set）和内部包含容器对象的tuple 是不可作为字典的key, 其他的对象都可以。
 
-### 迭代器、生成器
 
-### 进程、线程、协程 
+
+### 容器类型的对象，如字典的内存结构
+
+
+字典的keys() 方法会在遍历前生成一个临时的列表，导致上面的代码消耗大量内存并且运行缓慢。正确的方式，是使用默认的 iterator。默认的 iterator 不会分配新内存，也就不会造成上面的性能问题
+
+
+### 迭代器、生成器、可迭代对象
+1. 基于一个可迭代对象（即容器对象 list/tuple/生成器/迭代器）可以产生的 生成器或迭代器；
+2. 迭代器、生成器 均有next()方法；
+3. 迭代器是一次性载入内存; 生成器使用了『惰性计算』/『延迟求值』的机制，在每次计算出一个条目后，把这个条目“产生”(yield)出来.
+
+
+### 进程、线程、协程 应用场景
+
+### Garbage Collections/cyclical references
+
+Generational is a type of tracing grabage collection.
+
+Generational Garbage Collection is based on the gheory that __most objects die young__.
+
+
+### 数据库索引
+
+
+### tcp 三次握手、四次挥手
+
+### 赋值，深拷贝，浅拷贝
+
+### with
+
+### 闭包
+
+### 排序算法及复杂度
+
+
+
