@@ -60,6 +60,18 @@ type Request struct { ...
 func Encode(w io.Writer, req *Request) { ...
 ```
 
-#### 警告2
+#### 示例警告
+```
+recorder.go:55:5: exported var RecordBind should have comment or be unexported
+recorder.go:158:1: exported function Record_ErrorRecord should have comment or be unexported
+recorder.go:173:6: don't use underscores in Go names; type Data_MemStats should be DataMemStats
+recorder.go:179:2: struct field FreeRam should be FreeRAM
+```
+
+golint 会检测的方面：
+* 变量名规范
+* 变量的声明，像```var str string = "test"```，会有警告，应该```var str = "test"```
+* 大小写问题，大写导出包的要有注释
+* x += 1 应该 x++
 
 [返回首页](/index.html)
