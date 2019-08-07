@@ -37,4 +37,29 @@ __设置路径__：Code -> Preferences -> Settings -> Workspace Settings, Search
     
     __设置路径__：Code -> Preferences -> Settings
 
+
+### 3. vscode golint 代码规范解读
+#### 警告1
+* 描述：exported function xxx should have comment or be unexported
+* 环境：
+```
+=> ~$ go version
+go version go1.12.1 darwin/amd64
+=> ~$ gopls version
+version v0.1.3-cmd.gopls, built in $GOPATH mode
+```
+* 解决：
+
+Comment SentencesSee https://golang.org/doc/effective_go.html#commentary. Comments documenting declarations should be full sentences, even if that seems a little redundant. This approach makes them format well when extracted into godoc documentation. Comments should begin with the name of the thing being described and end in a period:
+
+记录声明的注释应该是完整的句子，即使这看起来有点多余。这种方法使它们在提取到 godoc 文档时格式良好。注释应以所述物品的名称开始，并以句号结束:
+```
+// Request represents a request to run a command.
+type Request struct { ...
+// Encode writes the JSON encoding of req to w.
+func Encode(w io.Writer, req *Request) { ...
+```
+
+#### 警告2
+
 [返回首页](/index.html)
