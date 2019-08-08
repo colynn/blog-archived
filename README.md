@@ -5,7 +5,7 @@
 * [安装 MiniKube](K8s/0.Install_Minikube.md)
 
 ### GO
-* [Go-语法知识汇总](GO/1_go_basic_knowledge_summarizing.md)
+* [Go-语法知识汇总](Go/1_go_basic_knowledge_summarizing.md)
 
 ### 小程序
 * [小程序登录的推荐实践](MiniProgram/mp_login_recommend_practice.md)
