@@ -9,6 +9,7 @@
 
 ### 小程序
 * [小程序登录的推荐实践](MiniProgram/mp_login_recommend_practice.md)
+* [JS语法知识归档](MiniProgram/1_js_base_summarizing.md)
 
 ### PHP
 * [Mac-PHP环境准备](PHP/0_mac_prepare_php_env.md)
