@@ -118,7 +118,14 @@ func main() {
 }
 ```
 
-_注_: int, uint 和 uintptr 在 32 位系统上通常为 32 位宽，在 64 位系统上则为 64 位宽。 当你需要一个整数值时应使用 int 类型，除非你有特殊的理由使用固定大小或无符号的整数类型。
+_注_: 
+* int, uint 和 uintptr 在 32 位系统上通常为 32 位宽，在 64 位系统上则为 64 位宽。 当你需要一个整数值时应使用 int 类型，除非你有特殊的理由使用固定大小或无符号的整数类型。
+*  reflect.TypeOf(x) 打印x的类型
+* 常用的格式化字符串：
+	* %v the value in a default format, when printing structs, the plus flag (%+v) adds field names 
+	* %#v a Go-syntax representation of the value 
+	* %T a Go-syntax representation of the type of the value
+
 
 ### For循环
 Go 只有一种循环结构：for 循环。
@@ -177,6 +184,40 @@ func main() {
 		sum += sum
 	}
 	fmt.Println(sum)
+}
+```
+
+
+* for 循环的 range 形式可遍历切片或映射。
+
+可以将下标或值赋予 _ 来忽略它。
+
+```
+for i, _ := range pow
+for _, value := range pow
+```
+
+若你只需要索引，忽略第二个变量即可。
+
+```
+for i := range pow
+```
+
+代码示例
+
+```
+package main
+
+import "fmt"
+
+func main() {
+	pow := make([]int, 10)
+	for i := range pow {
+		pow[i] = 1 << uint(i) // == 2**i
+	}
+	for i, value := range pow {
+		fmt.Printf("%v\t%d\n", i, value)
+	}
 }
 ```
 
@@ -369,4 +410,53 @@ _注_:
 * 切片s的长度和容量可通过表达式 len(s) 和 cap(s) 来获取。
 * 切片的零值是 nil.
 
+* 切片练习??：
+```
+实现 Pic。它应当返回一个长度为 dy 的切片，其中每个元素是一个长度为 dx，元素类型为 uint8 的切片。当你运行此程序时，它会将每个整数解释为灰度值（好吧，其实是蓝度值）并显示它所对应的图像。
+
+图像的选择由你来定。几个有趣的函数包括 (x+y)/2, x*y, x^y, x*log(y) 和 x%(y+1)。
+
+（提示：需要使用循环来分配 [][]uint8 中的每个 []uint8；请使用 uint8(intValue) 在类型之间转换；你可能会用到 math 包中的函数。）
+```
+
 ### 切片文法、数组文法 应用场景??
+
+### 函数值
+函数也是值。它们可以像其它值一样传递。
+
+函数值可以用作函数的参数或返回值。
+
+```
+package main
+
+import (
+	"fmt"
+	"math"
+	"reflect"
+)
+
+func compute(fn func(float64, float64) float64) float64 {
+	return fn(3, 4)
+}
+
+func main() {
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+	fmt.Println(hypot(5, 12))
+	
+	fmt.Println(reflect.TypeOf(hypot))
+	
+	fmt.Println(compute(hypot))
+	fmt.Println(compute(math.Pow))
+}
+```
+
+输出：
+
+```
+13
+func(float64, float64) float64
+5
+81
+```
