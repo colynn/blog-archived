@@ -41,62 +41,62 @@ __设置路径__：Code -> Preferences -> Settings -> Workspace Settings, Search
 
 1. 安装Go相关插件
 
-__注意__: 请先设置 ```GOPROXY```
+    __注意__: 请先设置 ```GOPROXY```
 
-```
-export GOPROXY=https://goproxy.io
-```
+    ```
+    export GOPROXY=https://goproxy.io
+    ```
 
-推荐安装的插件包如下：
-To install the tools manually in the current ```$GOPATH```, just copy the below (after choosing the tools) in your terminal run:
+    推荐安装的插件包如下：
+    To install the tools manually in the current ```$GOPATH```, just copy the below (after choosing the tools) in your terminal run:
 
-```
-go get -u -v github.com/ramya-rao-a/go-outline
-go get -u -v github.com/acroca/go-symbols
-go get -u -v github.com/mdempsky/gocode
-go get -u -v github.com/rogpeppe/godef
-go get -u -v golang.org/x/tools/cmd/godoc
-go get -u -v github.com/zmb3/gogetdoc
-go get -u -v golang.org/x/lint/golint
-go get -u -v github.com/fatih/gomodifytags
-go get -u -v golang.org/x/tools/cmd/gorename
-go get -u -v sourcegraph.com/sqs/goreturns
-go get -u -v golang.org/x/tools/cmd/goimports
-go get -u -v github.com/cweill/gotests/...
-go get -u -v golang.org/x/tools/cmd/guru
-go get -u -v github.com/josharian/impl
-go get -u -v github.com/haya14busa/goplay/cmd/goplay
-go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs
-go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct
-go get -u -v github.com/alecthomas/gometalinter
-gometalinter --install
-```
+    ```
+    go get -u -v github.com/ramya-rao-a/go-outline
+    go get -u -v github.com/acroca/go-symbols
+    go get -u -v github.com/mdempsky/gocode
+    go get -u -v github.com/rogpeppe/godef
+    go get -u -v golang.org/x/tools/cmd/godoc
+    go get -u -v github.com/zmb3/gogetdoc
+    go get -u -v golang.org/x/lint/golint
+    go get -u -v github.com/fatih/gomodifytags
+    go get -u -v golang.org/x/tools/cmd/gorename
+    go get -u -v sourcegraph.com/sqs/goreturns
+    go get -u -v golang.org/x/tools/cmd/goimports
+    go get -u -v github.com/cweill/gotests/...
+    go get -u -v golang.org/x/tools/cmd/guru
+    go get -u -v github.com/josharian/impl
+    go get -u -v github.com/haya14busa/goplay/cmd/goplay
+    go get -u -v github.com/uudashr/gopkgs/cmd/gopkgs
+    go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct
+    go get -u -v github.com/alecthomas/gometalinter
+    gometalinter --install
+    ```
 
 
 2. 配置VS code 的 settings.json
 
-相关go的配置如下：
+    * 相关go的配置如下：
 
-```
-    "go.useLanguageServer": true, //using language server
-    "go.autocompleteUnimportedPackages": true,
-    "go.inferGopath": true,
-    "go.docsTool": "godoc",
-    "go.gocodePackageLookupMode": "go",
-    "go.gotoSymbol.includeImports": true,
-    "go.useCodeSnippetsOnFunctionSuggest": false, //使用代码片段提示
-    "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
-    "go.formatTool": "goimports",  // 代码格式化
-    "go.buildOnSave": "off", //保存代码时自动编译
-    "go.lintOnSave": "file", //保存代码时优化
-    "go.vetOnSave": "package", //保存代码时检查潜在错误
-    "go.coverOnSave": false //保存代码时执行测试
+    ```
+        "go.useLanguageServer": true, //using language server
+        "go.autocompleteUnimportedPackages": true,
+        "go.inferGopath": true,
+        "go.docsTool": "godoc",
+        "go.gocodePackageLookupMode": "go",
+        "go.gotoSymbol.includeImports": true,
+        "go.useCodeSnippetsOnFunctionSuggest": false, //使用代码片段提示
+        "go.useCodeSnippetsOnFunctionSuggestWithoutType": true,
+        "go.formatTool": "goimports",  // 代码格式化
+        "go.buildOnSave": "off", //保存代码时自动编译
+        "go.lintOnSave": "file", //保存代码时优化
+        "go.vetOnSave": "package", //保存代码时检查潜在错误
+        "go.coverOnSave": false //保存代码时执行测试
 
-```
+    ```
 
-__NOTE__: If you are using Go modules, then we strongly recommend using the Go language server as it performs much better than the tools below.
+    __NOTE__: If you are using Go modules, then we strongly recommend using the Go language server as it performs much better than the tools below.
 
-[Refer to: Go tools that the Go extension depends on](https://github.com/Microsoft/vscode-go/wiki/Go-tools-that-the-Go-extension-depends-on)
+    [Refer to: Go tools that the Go extension depends on](https://github.com/Microsoft/vscode-go/wiki/Go-tools-that-the-Go-extension-depends-on)
 
 
 3. reload VS code 配置就会， enjoy it.
