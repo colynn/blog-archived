@@ -4,16 +4,16 @@
 ### 前言
 In Go 1.11, a new tool has arrived. It's called go mod. For those who don't know what is that, I'll tell you about it.
 
-One of the purposes of this tool is to get rid of $GOPATH, so you can git clone a Golang repository anywhere and work on it without worrying about $GOPATH at all. There are other purposes of course, such as simpler versioning and usage, but I think the RIP $GOPATH is the most notable.
+One of the purposes of this tool is to get rid of ```$GOPATH```, so you can git clone a Golang repository anywhere and work on it without worrying about $GOPATH at all. There are other purposes of course, such as simpler versioning and usage, but I think the RIP ```$GOPATH`` is the most notable.
 
-If the repository is a mod, all the tools you use regularly (go get, go build, etc.) will handle it nicely without changing anything.
+If the repository is a mod, all the tools you use regularly (```go get```, ```go build```, etc.) will handle it nicely without changing anything.
 
 
 ### 如何使用 Modules ？
 把 golang 升级到 1.11（现在1.12 已经发布了，建议使用1.12）
 设置 GO111MODULE
 
-```go mod init [module-name]```. Yep, that's all you have to do. If you're trying to go mod-ify an existing project that uses $GOPATH, you should export the GO111MODULE=on variable (go mod will tell you that as well).
+```go mod init [module-name]```. Yep, that's all you have to do. If you're trying to go mod-ify an existing project that uses $GOPATH, you should export the ```GO111MODULE=on``` variable (```go mod``` will tell you that as well).
 
 
 ### GO111MODULE
