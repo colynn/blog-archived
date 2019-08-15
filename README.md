@@ -6,6 +6,7 @@
 
 ### GO
 * [Go-语法知识汇总](Go/1_go_basic_knowledge_summarizing.md)
+* [Go Mod 包管理- What & How](Go/2_Introducing_Go_Mod.md)
 
 ### 小程序
 * [小程序登录的推荐实践](MiniProgram/mp_login_recommend_practice.md)
