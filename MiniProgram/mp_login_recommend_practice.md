@@ -36,11 +36,12 @@
     </template>
 
     <script>
-    
+
     setChoice(event) {
             var parent_id = event.currentTarget.dataset.parent; 
             var index = event.currentTarget.dataset.index;
             ...
     </script>
     ```
+
 [返回首页](/index.html)
