@@ -9,7 +9,7 @@
 * [Go Mod 包管理- What & How](Go/2_Introducing_Go_Mod.md)
 
 ### 小程序
-* [小程序登录的推荐实践](MiniProgram/mp_login_recommend_practice.md)
+* [小程序(wepy)实践归档](MiniProgram/mp_login_recommend_practice.md)
 * [JS语法知识归档](MiniProgram/1_js_base_summarizing.md)
 
 ### PHP
