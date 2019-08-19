@@ -71,6 +71,63 @@ function contains(arrays, obj) {
     }
     return false;
 ```
+### 数组的内置函数
+
+1. ```slice(start, end)``` 方法可从已有的数组中返回选定的元素。
+    | 参数 | 描述 |
+    | ------ | ------  |
+    | start | 必需。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置 |
+    | end   | 可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。|
+
+    示例：
+
+    ```
+    <script type="text/javascript">
+
+    var arr = new Array(3)
+    arr[0] = "George"
+    arr[1] = "John"
+    arr[2] = "Thomas"
+
+    document.write(arr + "<br />")
+    document.write(arr.slice(1) + "<br />")
+    document.write(arr)
+
+    </script>
+    ```
+
+    输出：
+
+    ```
+    George,John,Thomas
+    John,Thomas
+    George,John,Thomas
+    ```
+
+2. 连接数组
+
+    ```
+    var arr1=[1,2,3];
+    var arr2=[4,5,6];
+    var arr3=[7,8,9];
+    var arr=arr1.concat(arr2,arr3,[10,11]);
+    console.log(arr);//输出 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    ```
+
+3. 数组转换为字符串
+
+    ```
+    var arr=new Array(1,2,3,4,5);
+    var str=arr.join('-');//间隔的字符串，默认为“，”
+    console.log(str);//1-2-3-4-5
+    ```
+
+4. 查找字符位置
+
+    ```
+    indexOf();   // 通过字符找位置，（找相同单词的第一个）
+    lastIndexOf(); // 通过字符串找位置，（找相同单词最后一个）
+    ```
 
 ### 对象添加元素
 
