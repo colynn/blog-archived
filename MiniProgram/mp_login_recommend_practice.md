@@ -1,7 +1,9 @@
-### 推荐实践
+### 引言
+
+### 登录-推荐实践
 ![Image](images/wechat_auth_login.png)
 
-### 实现原则
+### 登录-实现原则
 * 小程序与开发服务器端通过 3rd_session（第三方session）【即自定义登录状态】来实现通信，微信官方也不建议直接通过openid/session_key来通信；
 
 *原因*： openid是微信用户的唯一标识，直接用于传参通信的话，会存在被第三方组织截获的风险，进而用于其他用途，
@@ -13,4 +15,32 @@
 开发者将 signature、rawData 发送到开发者服务器进行校验。服务器利用用户对应的 session_key 使用相同的算法计算出签名 signature2 ，比对 signature 与 signature2 即可校验数据的完整性。
 小程序登录判断依赖wx.checksession， 但对于自身的登录态也是需要维护的，当前没有想到一个比较完整的解决方案。
 
+### 问题记录
+1. 子组件的方法调用时没有生效，注意将方法调整至methods内， 示例代码：
+    ```
+        ......
+        methods = {
+            async addFavorites() {
+                wepy.showToast({
+                        title: '接口待完善',
+                        duration: 2000
+                });
+            }
+        }
+        ....
+    ```
+2. 绑定事件获取要操作的属性时均要通过```data-*```的形式来传值，示例代码：
+    ```
+    <template>
+        <view data-parent="{{index}}" data-index="{{current}}" @tap.stop="setChoice">示例代码</view>
+    </template>
+
+    <script>
+    
+    setChoice(event) {
+            var parent_id = event.currentTarget.dataset.parent; 
+            var index = event.currentTarget.dataset.index;
+            ...
+    </script>
+    ```
 [返回首页](/index.html)

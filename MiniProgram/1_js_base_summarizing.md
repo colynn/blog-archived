@@ -107,6 +107,11 @@ delete jsonObj.age;
 //结果：Object { id: 1, name: "danlis" }
 ```
 
+__注__： 
+1. 对象序列转化为json格式的字符串：```JSON.stringify(jsObj)```
+2. 对象反序列化（由json格式的字符串转化为javascript对象）```JSON.parse('{"name": "小明", "age": 14}')```
+
+
 ### 比较运算符
 
 假定 x = 5;
