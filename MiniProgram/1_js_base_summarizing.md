@@ -196,5 +196,6 @@ var voteable = (age < 18) ? "太年轻":"足够成熟";
 ```
 
 
+Refer to: [Javascript教程 A re-introduction to JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
 
 [返回首页](/index.html)
