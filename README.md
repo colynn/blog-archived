@@ -11,6 +11,7 @@
 ### 小程序
 * [小程序(wepy)实践归档](MiniProgram/mp_login_recommend_practice.md)
 * [JS语法知识归档](MiniProgram/1_js_base_summarizing.md)
+* [React.JS基础知识归档](MiniProgram/2_ReactJS_summarizing.md)
 
 ### PHP
 * [Mac-PHP环境准备](PHP/0_mac_prepare_php_env.md)
