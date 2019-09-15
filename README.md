@@ -3,6 +3,7 @@
 ### K8s
 * [Linux基础](Local/认识Linux.md)
 * [安装 MiniKube](K8s/0.Install_Minikube.md)
+* [部署k8s集群](K8s/2.通过Kubespray_部署k8s.md)
 
 ### GO
 * [Go-语法知识汇总](Go/1_go_basic_knowledge_summarizing.md)
