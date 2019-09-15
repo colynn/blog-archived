@@ -17,6 +17,8 @@
 
 ## 安装
 ### 1. 设置repo
+
+```
 cat > /etc/yum.repos.d/gitlab-ce.repo << EOF
 [gitlab-ce]
 name=Gitlab CE Repository
@@ -24,6 +26,7 @@ baseurl=https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el$releasever/
 gpgcheck=0
 enabled=1
 EOF
+```
 
 ### 2. 安装gitlab
 
