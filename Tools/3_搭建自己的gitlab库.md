@@ -1,4 +1,6 @@
 [返回首页](/index.html)
+
+## GitLab
 ### 前言
 1. 本文Gitlab的安装为主机方式, 获取其他安装方式[请点击](https://git.lug.ustc.edu.cn/help/install/README.md)
 
