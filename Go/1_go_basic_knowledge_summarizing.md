@@ -539,30 +539,30 @@ if v, ok := interface{}(s).(string); ok {
 比如如下代码是错误的在编译期间就会报错
 `cannot convert in (type interface {}) to type Handler: need type assertion `
 
-	```
-	func ServeHTTP(s string) {
-		fmt.Println(s)
-	}
-	
-	type Handler func(string)
-	
-	func panduan(in interface{}) {
-		Handler(in)("wujunbin")
-	}
-	
-	func main() {
-		panduan(Handler(ServeHTTP))
-	}
+```
+func ServeHTTP(s string) {
+	fmt.Println(s)
+}
+
+type Handler func(string)
+
+func panduan(in interface{}) {
+	Handler(in)("wujunbin")
+}
+
+func main() {
+	panduan(Handler(ServeHTTP))
+}
 	```
 
 根据错误提示是说要我们先进行类型断言才可以继续使用该类型的函数
 
-	```
-	if v, ok := in.(Handler); ok {
-		//跟什么类型判断就只能调用什么类型的方法
-		v("BrainWu")
-	}
-	```
+```
+if v, ok := in.(Handler); ok {
+	//跟什么类型判断就只能调用什么类型的方法
+	v("BrainWu")
+}
+```
 
 只有让传进来的in参数先与Handler进行类型判断 如果返回值是OK则代表类型相同才能进行对应的方法调用
 
