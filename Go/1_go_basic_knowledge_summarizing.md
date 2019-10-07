@@ -499,14 +499,114 @@ t := i.(T)
 t, ok := i.(T)
 ```
 
+* i 代码要判断的变量， 必须为interface类型才可以进行类型断言；
+* T 代表要被判断的类型，eg: string, int64
+* t 代表返回的值，
+* ok 代码是否为该类型
+
 若 i 保存了一个 T，那么 t 将会是其底层值，而 ok 为 true。
 
 否则，ok 将为 false 而 t 将为 T 类型的零值，程序并不会产生恐慌。
 
 请注意这种语法和读取一个映射时的相同之处。
 
-__注__: 类型选择中的声明与类型断言 i.(T) 的语法相同，只是具体类型 T 被替换成了关键字 type。
+示例代码
 
+```
+s := "baidu"
+if v, ok := s.(string); ok {
+	fmt.Println(v)
+}
+```
+
+```
+invalid type assertion: s.(string) (non-interface type string on left)
+```
+在这里只要是在声明时或函数传进来的参数不是interface类型那么做类型断言都是回报 non-interface的错误的
+
+所以我们只能通过将s作为一个interface{}的方法来进行类型断言 如下代码所示
+
+```
+s := "BrainWu"
+if v, ok := interface{}(s).(string); ok {
+	fmt.Println(v)
+}
+```
+
+将s显示的转换为interface{}接口类型则可以进行类型断言了
+
+2 当函数作为参数并且被调用函数将参数类型指定为interface{}的时候是没有办法直接调用该方法的
+比如如下代码是错误的在编译期间就会报错
+`cannot convert in (type interface {}) to type Handler: need type assertion `
+
+	```
+	func ServeHTTP(s string) {
+		fmt.Println(s)
+	}
+	
+	type Handler func(string)
+	
+	func panduan(in interface{}) {
+		Handler(in)("wujunbin")
+	}
+	
+	func main() {
+		panduan(Handler(ServeHTTP))
+	}
+	```
+
+根据错误提示是说要我们先进行类型断言才可以继续使用该类型的函数
+
+	```
+	if v, ok := in.(Handler); ok {
+		//跟什么类型判断就只能调用什么类型的方法
+		v("BrainWu")
+	}
+	```
+
+只有让传进来的in参数先与Handler进行类型判断 如果返回值是OK则代表类型相同才能进行对应的方法调用
+
+另外进行类型断言之后如果断言成功 就只能使用该类型的方法比如对一个结构体S进行与A接口断言
+
+S实际上实现了A B两个接口 // 待进一步理解？？
+
+A interface 具有 a()方法  B interface 具有 b()方法 如果结构体S作为参数被传入一个函数中并且在该函数中是interface{}类型
+
+那么进行与A的类型断言之后就只能调用a()而不能调用b()因为编译器只知道你目前是A类型却不知道你目前也是B类型。
+
+3 另外讲解 switch与类型断言的结合使用还是比较方便的 
+比如下面这个例子
+	
+	```
+	package main
+	
+	import (
+		"fmt"
+	)
+	
+	type Element interface {}
+	
+	func main() {
+		var e Element = 100
+		switch value := e.(type) {
+		case int:
+			fmt.Println("int", value)
+		case string:
+			fmt.Println("string", value)
+		default:
+			fmt.Println("unknown", value)
+		}
+	}
+	```
+
+打印结果：
+	
+	```
+	int 100
+	```
+
+__注__: 
+* 类型选择中的声明与类型断言 i.(T) 的语法相同，只是具体类型 T 被替换成了关键字 type。
 
 ### Stringer
 
@@ -550,10 +650,11 @@ __注__: 类型选择中的声明与类型断言 i.(T) 的语法相同，只是�
 
 	* 场景不同，定义函数的方式也就不同，但是更推荐使用方式1，因为我们在声明、使用结构体变量多数也是作为指针变量使用的。
 
-2. fmt 三者的区别
+2. fmt Print/Println/Printf/Sprintf的区别
+	* `fmt.Print` 不会自动换行，也不能处理占位符。
+	* `fmt.Println` 会自动换行，但不能处理占位符。
 	* `fmt.Printf` 它通过 `os.Stdout` 输出格式化的字符串，可以处理占位符。
 	* `fmt.Sprintf` 则格式化并返回一个字符串而不带任何输出。
-	* `fmt.Println` 会自动换行，但不能处理占位符。
 
 	示例代码：
 
@@ -568,7 +669,9 @@ __注__: 类型选择中的声明与类型断言 i.(T) 的语法相同，只是�
 
 		fmt.Println("Println输出，不能处理占位符：%d", test1)
 
+		fmt.Print("Print输出, 并没有换行", test1)
 		fmt.Println("Println输出", test1)
+
 
 		fmt.Printf("Printf输出，可以解析占位符：%d, 不会自动换行", test1)
 
@@ -581,9 +684,39 @@ __注__: 类型选择中的声明与类型断言 i.(T) 的语法相同，只是�
 
 	```
 	Println输出，不能处理占位符：%d 1
-	Println输出 1
-	Printf输出，可以解析占位符：1, 不会自动换行Printf输出,test1: 1, test2: 2
+	Print输出, 并没有换行1Println输出 1
+	Printf输出，可以解析占位符：1, 不会自动换行Printf输出,test1: 1, test2: 2123
 	```
 
-3. 切片文法、数组文法 使用场景，时间复杂度？
+3. 字符串与数字转换
+	* 字符串转为int64
 
+	```
+	var string1 = "123"
+	stringInt64, err := strconv.ParseInt(string1, 10, 64)
+	```
+
+	```
+	var a = "123"
+	if b, error := strconv.Atoi(a); error == nil {
+		fmt.Printf("b: %T, %d", b, b)
+	}
+	```
+
+	* 数字拼接为字符串
+
+	```
+	d := strconv.Itoa(1234)
+	fmt.Printf("string: %s", d)
+	```
+
+	* 字符串拼接
+
+	```
+	newString := strings.Join([]string{"string01", "string02"}, "-")
+	fmt.Printf("newString: %s ", newString)
+	```
+
+4. 切片文法、数组文法 使用场景，时间复杂度？
+
+5. 类型断言
