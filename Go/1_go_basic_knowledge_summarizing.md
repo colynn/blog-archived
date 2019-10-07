@@ -127,6 +127,7 @@ _注_:
 	* %T a Go-syntax representation of the type of the value
 
 
+
 ### For循环
 Go 只有一种循环结构：for 循环。
 
@@ -309,7 +310,7 @@ func main() {
 }
 ```
 
-### 结构体文法？
+### 结构体文法 
 结构体文法通过直接列出字段的值来新分配一个结构体。
 
 使用 Name: 语法可以仅列出部分字段。（字段名的顺序无关。）
@@ -420,8 +421,6 @@ _注_:
 （提示：需要使用循环来分配 [][]uint8 中的每个 []uint8；请使用 uint8(intValue) 在类型之间转换；你可能会用到 math 包中的函数。）
 ```
 
-### 切片文法、数组文法 应用场景??
-
 ### 函数值
 函数也是值。它们可以像其它值一样传递。
 
@@ -510,3 +509,81 @@ __注__: 类型选择中的声明与类型断言 i.(T) 的语法相同，只是�
 
 
 ### Stringer
+
+
+### Reader
+
+## 疑问
+
+1. 结构体 函数定义 如下两种方式的不同点
+
+	* 方式1
+
+	```
+	func (t *T) M() {
+		fmt.Println(t.S)
+	}
+
+	func main() {
+		var i I = T{"hello"}
+		i.M()
+	}
+	```
+
+	* 方式2
+
+	```
+	func (t T) M() {
+		fmt.Println(t.S)
+	}
+
+	func main() {
+		var I = T{"hello"}
+		I.M()
+	}
+	```
+
+	__注解__: 
+	
+	* 这两种方式均可以为结构体定义函数，方式1是为结构体指针对象 
+	新增函数，方式2是为结构体对象新增函数。
+
+	* 场景不同，定义函数的方式也就不同，但是更推荐使用方式1，因为我们在声明、使用结构体变量多数也是作为指针变量使用的。
+
+2. fmt 三者的区别
+	* `fmt.Printf` 它通过 `os.Stdout` 输出格式化的字符串，可以处理占位符。
+	* `fmt.Sprintf` 则格式化并返回一个字符串而不带任何输出。
+	* `fmt.Println` 会自动换行，但不能处理占位符。
+
+	示例代码：
+
+	```
+	package main
+
+	import ("fmt")
+	func main() {
+		var test1 int = 1
+
+		var test2 int = 2
+
+		fmt.Println("Println输出，不能处理占位符：%d", test1)
+
+		fmt.Println("Println输出", test1)
+
+		fmt.Printf("Printf输出，可以解析占位符：%d, 不会自动换行", test1)
+
+		fmt.Printf("Printf输出,test1: %d, test2: %d", test1, test2)
+	}
+
+	```
+
+	运行输出
+
+	```
+	Println输出，不能处理占位符：%d 1
+	Println输出 1
+	Printf输出，可以解析占位符：1, 不会自动换行Printf输出,test1: 1, test2: 2
+	```
+
+3. 切片文法、数组文法 使用场景，时间复杂度？
+
