@@ -553,7 +553,7 @@ func panduan(in interface{}) {
 func main() {
 	panduan(Handler(ServeHTTP))
 }
-	```
+```
 
 根据错误提示是说要我们先进行类型断言才可以继续使用该类型的函数
 
@@ -576,34 +576,35 @@ A interface 具有 a()方法  B interface 具有 b()方法 如果结构体S作�
 
 3 另外讲解 switch与类型断言的结合使用还是比较方便的 
 比如下面这个例子
-	
-	```
-	package main
-	
-	import (
-		"fmt"
-	)
-	
-	type Element interface {}
-	
-	func main() {
-		var e Element = 100
-		switch value := e.(type) {
-		case int:
-			fmt.Println("int", value)
-		case string:
-			fmt.Println("string", value)
-		default:
-			fmt.Println("unknown", value)
-		}
+
+```
+package main
+
+import (
+	"fmt"
+)
+
+type Element interface {}
+
+func main() {
+	var e Element = 100
+	switch value := e.(type) {
+	case int:
+		fmt.Println("int", value)
+	case string:
+		fmt.Println("string", value)
+	default:
+		fmt.Println("unknown", value)
 	}
-	```
+}
+```
 
 打印结果：
 
 ```
 int 100
 ```
+
 
 * 参考链接： https://blog.csdn.net/cbmljs/article/details/82966907
 
@@ -720,6 +721,66 @@ __注__:
 	fmt.Printf("newString: %s ", newString)
 	```
 
-4. 切片文法、数组文法 使用场景，时间复杂度？
+	* 字符串前、后缀
 
-5. 类型断言
+	```
+	// 前缀
+	strings.HasPrefix(s, prefix string) bool
+
+	// 后缀
+	strings.HasSuffix(s, suffix string) bool
+	```
+
+	* 字符串包含
+
+	```
+	strings.Contains(s, substr string) bool
+	```
+
+4. 数字操作
+
+	* 官方的math 包中提供了取整的方法，向上取整math.Ceil() ，向下取整math.Floor()
+
+	```
+	package main
+	import (
+		"fmt"
+		"math"
+	)
+	func main(){
+		x := 1.1
+		fmt.Println(math.Ceil(x))  // 2
+		fmt.Println(math.Floor(x))  // 1
+	}
+	```
+
+5. 切片文法、数组文法 使用场景，时间复杂度？
+	
+	* 切片合并
+
+	```
+		a := []int{1, 2, 3}
+		b := []int{2, 3, 4, 5, 6}
+		a = append(a, b...)
+	```
+		
+
+6. 类型断言
+
+7. omitempty 在go中的使用
+
+示例：
+```
+
+type Person struct {
+    Name string `json:"name"`
+    Age  int    `json:"age"`
+    Addr string `json:"addr,omitempty"`
+
+```
+
+* 有了omitempty后，如果addr为空， 则生成的json中没有addr字段。
+* 如果没有定义 omitempty，则始终会返回addr这个字段。
+
+
+	
