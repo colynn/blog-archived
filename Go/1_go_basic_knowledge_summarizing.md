@@ -535,7 +535,7 @@ if v, ok := interface{}(s).(string); ok {
 
 将s显示的转换为interface{}接口类型则可以进行类型断言了
 
-2 当函数作为参数并且被调用函数将参数类型指定为interface{}的时候是没有办法直接调用该方法的
+2. 当函数作为参数并且被调用函数将参数类型指定为interface{}的时候是没有办法直接调用该方法的
 比如如下代码是错误的在编译期间就会报错
 `cannot convert in (type interface {}) to type Handler: need type assertion `
 
@@ -574,36 +574,37 @@ A interface 具有 a()方法  B interface 具有 b()方法 如果结构体S作�
 
 那么进行与A的类型断言之后就只能调用a()而不能调用b()因为编译器只知道你目前是A类型却不知道你目前也是B类型。
 
-3 另外讲解 switch与类型断言的结合使用还是比较方便的 
+
+3. 另外讲解 switch与类型断言的结合使用还是比较方便的 
 比如下面这个例子
 
-```
-package main
+	```
+	package main
 
-import (
-	"fmt"
-)
+	import (
+		"fmt"
+	)
 
-type Element interface {}
+	type Element interface {}
 
-func main() {
-	var e Element = 100
-	switch value := e.(type) {
-	case int:
-		fmt.Println("int", value)
-	case string:
-		fmt.Println("string", value)
-	default:
-		fmt.Println("unknown", value)
+	func main() {
+		var e Element = 100
+		switch value := e.(type) {
+		case int:
+			fmt.Println("int", value)
+		case string:
+			fmt.Println("string", value)
+		default:
+			fmt.Println("unknown", value)
+		}
 	}
-}
-```
+	```
 
-打印结果：
+	打印结果：
 
-```
-int 100
-```
+	```
+	int 100
+	```
 
 
 * 参考链接： https://blog.csdn.net/cbmljs/article/details/82966907
