@@ -4,6 +4,19 @@
 * Mac os 10.13.6
 * VS code 1.31.1
 
+## 快捷键
+
+![Image](images/vscode_keyword.jpg)
+
+### 解读
+1. General 
+    * Command + Shift + p, F1  显示命令面板
+    * Command + p 快速打开
+
+2. Integrated Terminal
+    * Ctrl + ` 显示或隐藏集成终端；
+    * Ctrl + Shift + ` 新建终端；
+
 
 ## 常用设置
 ### 1. 隐藏.pyc文件
