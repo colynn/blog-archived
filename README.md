@@ -21,11 +21,15 @@
 ### Python
 * [Python-基础知识汇总](Python/0_basic_knowledge_summarizing.md)
 
+### 系统安全
+* [AppArmor 应用程序防护示例](Tools/1_vscode_env_setting.md)
+
 ### 工具箱
 * [Charles抓包http/https](Tools/0_charles_capture_package.md)
 * [VSCode 环境设置](Tools/1_vscode_env_setting.md)
-* [AppArmor 应用程序防护示例](Tools/1_vscode_env_setting.md)
 * [运维-搭建自己的gitlab库](Tools/3_搭建自己的gitlab库.md)
+* [verdaccio npm私服搭建](Tools/5_npm_private_registry搭建.md)
+
 
 ### Markdown
 

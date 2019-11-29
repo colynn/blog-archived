@@ -12,6 +12,7 @@
 1. General 
     * Command + Shift + p, F1  显示命令面板
     * Command + p 快速打开
+    * Command + Shite + N  新建vscode 窗口
 
 2. Integrated Terminal
     * Ctrl + ` 显示或隐藏集成终端；
