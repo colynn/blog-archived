@@ -618,6 +618,10 @@ __注__:
 
 ### Reader
 
+### Goroutines和Channels
+1. 如果我们使用了无缓存的channel, 那么两个慢的goroutines将会因为没有人接收而永远卡住。这种情况，称为goroutines泄漏，这将是一个BUG.和垃圾变量不同，泄漏的goroutines并不会被自动回收，因此确保每个不再需要的goroutine能正常退出是重要的。
+
+
 ## 疑问
 
 1. 结构体 函数定义 如下两种方式的不同点
