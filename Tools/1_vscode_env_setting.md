@@ -153,4 +153,19 @@ golint 会检测的方面：
 * 大小写问题，大写导出包的要有注释
 * x += 1 应该 x++
 
+
+### 5. Go tool to modify struct field tags faster
+#### how to use 
+1. add tags
+
+在对应的文件下，打开命令面板（Command + Shift + p）执行 `Go: Add Tags` 即可添加json field;
+
+2. remove tags
+
+在对应的文件下，打开命令面板（Command + Shift + p）执行 `Go: Remove Tags` 即可添加json field
+
+[github gomodifytags](https://github.com/fatih/gomodifytags)
+
+
+
 [返回首页](/index.html)
