@@ -6,11 +6,11 @@
 * [部署k8s集群](K8s/2.通过Kubespray_部署k8s.md)
 * [k8s基于开源组件的CI/CD实践](K8s/3.Kubernetes-CI&CD.md)
 
-### GO
+### Go
 * [Go-语法知识汇总](Go/1_go_basic_knowledge_summarizing.md)
 * [Go Mod 包管理- What & How](Go/2_Introducing_Go_Mod.md)
 * [Beego in Using](Go/4_Beego_using.md)
-* [Use Makefile for GO](Go/5_using_makefile.md)
+* [Use Makefile for Go](Go/5_using_makefile.md)
 
 ### 小程序
 * [小程序(wepy)实践归档](MiniProgram/mp_login_recommend_practice.md)
