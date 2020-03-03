@@ -340,4 +340,6 @@ help:
 ```
 
 
-Refer to: https://danishpraka.sh/2019/12/07/using-makefiles-for-go.html
+Refer to: 
+1. https://danishpraka.sh/2019/12/07/using-makefiles-for-go.html
+2. https://www.gnu.org/software/make/manual/html_node/Special-Targets.html#Special-Targets
