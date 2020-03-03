@@ -9,6 +9,7 @@
 ### GO
 * [Go-语法知识汇总](Go/1_go_basic_knowledge_summarizing.md)
 * [Go Mod 包管理- What & How](Go/2_Introducing_Go_Mod.md)
+* [Use Makefile for GO](Go/5_using_makefile.md)
 
 ### 小程序
 * [小程序(wepy)实践归档](MiniProgram/mp_login_recommend_practice.md)
