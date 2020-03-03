@@ -1,4 +1,5 @@
 # Using Makefile for Go
+## Go语言项目如何正确使用Makefile
 
 我们一直在用Go语言编写的HackerRank项目中的一个项目使用`make`作为构建工具，并且效果良好。在这篇文章中，我将指出我们使用的`GNU Make`的一些功能和复杂性，这些功能和复杂性最终提高了我们团队成员的整体生产力。
 
